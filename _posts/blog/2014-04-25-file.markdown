@@ -1,0 +1,96 @@
+---
+layout: post
+title: "File：访问本地文件"
+date: 2014-11-11 16:54:46
+author: cjf
+categories:
+- blog
+- file
+- Code-Snippets
+img: post03.jpg
+thumb: thumb03.jpg
+---
+
+在HTML5中，提供了一种与本地文件系统交互的标准方式：[File Api](http://www.w3.org/TR/file-upload/)。通过使用这个API，对于从Web页面上访问本地文件系统的相关处理将会变得十分简单。
+
+该标准主要定义了以下数据结构：
+
+* `File`
+* `FileList`
+* `FileReader`
+* `Blob`
+
+本篇文章主要介绍如何通过 File Api 访问本地文件！下面先了解下File、FileList、Blob：
+
+##FileList对象与file对象
+
+FileList对象表示用户选择的文件列表。在HTML4中，file控件内只允许放置一个文件，但是到了HTML5中，通过添加`multiple`属性，file控件内允许一次放置多个文件。控件内的每一个用户选择的文件都是一个file对象，而FileList对象则为这些file对象的列表，代表用户选择的所有文件。
+
+file对象有两个属性，`name`属性表示文件名，不包括路径，`lastModifiedDate`属性表示文件的最后修改日期。
+
+######FileList与File使用示例
+
+	function ShowFileName(){
+		//检测浏览器是否支持File对象
+		if(window.File){
+			var file;
+			// document.getElementById("file").files 返回FileList文件列表对象
+			for(var i=0; i<document.getElementById("file").files.length;i++){
+				//file对象为用户选择的单个文件
+				file = document.getElementById("file").files[i];
+				//此处您可以针对FileList文件列表中的每个文件进行多种处理，本例中只弹出文件名
+				alert(file.name);
+			}
+		}else{
+			alert("不支持 File Api");
+		}
+	}
+
+[查看demo]()
+
+##Blob对象
+
+Blob对象表示二进制原始数据，它提供一个`slice`方法，可以通过该方法访问到字节内部的原始数据块。**file对象也继承了Blob对象**。
+
+Blob对象有两个属性，`size`属性表示一个Blob对象的字节长度，`type`属性表示Blob的MIME类型，如果是未知类型，则返回一个空字符串。
+
+######显示文件信息
+
+	function ShowFileInfo(){
+		var file;
+		//得到用户选择的第一个文件
+		file = document.getElementById("file").files[0];
+		//显示文件名
+		document.getElementById("name").innerHTML = file.name;
+		//显示文件字节长度
+		document.getElementById("size").innerHTML = file.size;
+		//显示文件类型
+		document.getElementById("type").innerHTML = file.type;
+	}
+
+[查看demo]()
+
+######type属性验证是否为图片类型
+	
+	function FileUpload(){
+		var file;
+		for(var i=0;i>document.getElementById("file").files.length;i++){
+			file = document.getElementById("file").files[i];
+			if(!/image\/\w+/.test(file.type)){
+				alert(file.name + "不是图片文件！");
+				break;
+			}else{
+				//此处可加入文件上传代码
+				alert(file.name + "文件已上传");
+			}
+		}
+	}
+
+[查看demo]()
+
+HTML5中已经对file控件添加了`accept`属性，企图让file控件只能接受某种类型的文件，但是目前各主流浏览器对其的支持都只限于在打开文件选择窗口时，默认选择图片文件而已，如果选择其他类型文件，file控件也能正常接受。上面的例子中，就设置了该属性。
+
+	<input type="file" id="file" accept="image/*" />
+
+
+
