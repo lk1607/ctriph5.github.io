@@ -98,11 +98,11 @@ a:focus {
 }
 
 .navbar-header .navbar-brand {
-	color: white;
+	color: #00b3fe;
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: white;
+	color: black;
 	font-weight: 700;
 	font-size: 12px;
 }
@@ -117,7 +117,7 @@ a:focus {
 }
 
 .navbar-default {
-	background-color: {{ site.colors.secondary }};
+	background-color: #fff;
 	border-color: transparent;
 }
 
@@ -206,9 +206,11 @@ a:focus {
 ################################################################# */
 
 #headerwrap {
-	background-color: {{ site.colors.primary }};
-	min-height: 550px;
-	padding-top: 100px;
+	/*background-color: {{ site.colors.primary }};*/
+	background-image: url(../../../assets/img/bg.jpg);
+	background-repeat: no-repeat;
+	min-height: 423px;
+	padding-top: 190px;
 	padding-bottom: 0px;
 	text-align: center;
 }
@@ -229,6 +231,7 @@ a:focus {
 
 /* Services Wrap */
 #service {
+	color: #000;
 	margin-top: 100px;
 	margin-bottom: 80px;
 }
@@ -238,7 +241,10 @@ a:focus {
 	font-size: 60px;
 	padding: 15px;
 }
-
+/*
+#service p {
+	color: #000;
+}*/
 /* Portfolio Wrap */
 #portfoliowrap {
 	padding-top: 60px;
