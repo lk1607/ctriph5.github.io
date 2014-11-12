@@ -307,8 +307,8 @@ a:focus {
 	height: 182px;
 	background-image: url(../../../assets/img/tail.png);
 	background-repeat: no-repeat;
-	-webkit-animation:tail 1s linear 0.8s 1;
-	animation:tail 1s linear 0.8s 1;
+	-webkit-animation:tail 1s linear 2s 1;
+	animation:tail 1s linear 2s 1;
 	-webkit-transform-origin: 100% 0;
 	transform-origin: 100% 0;
 }
