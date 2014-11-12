@@ -8,8 +8,6 @@
 	URL: http://alvarez.is
 	
 ################################################################# */ 
-/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,900);
-@import url(http://fonts.googleapis.com/css?family=Lato:400,900);*/
 @import url("prettyPhoto.css") screen;
 @import url("hoverex-all.css") screen;
 @font-face {
@@ -35,8 +33,54 @@
          url('../../../assets/fonts/raleway-regular-webfont.svg#ralewayregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
+
+@-webkit-keyframes tail {
+	0% {
+		-webkit-transform: rotate(0);
+		transform:  rotate(0);
+	}
+	25% {
+		-webkit-transform: rotate(5deg);
+		transform:  rotate(5deg);
+	}
+	50% {
+		-webkit-transform: rotate(10deg);
+		transform:  rotate(10deg);
+	}
+	75% {
+		-webkit-transform: rotate(5deg);
+		transform:  rotate(5deg);
+	}
+	100% {
+		-webkit-transform: rotate(0);
+		transform:  rotate(0);
+	}
+}
+
+@keyframes tail {
+	0% {
+		-webkit-transform: rotate(0);
+		transform:  rotate(0);
+	}
+	25% {
+		-webkit-transform: rotate(5deg);
+		transform:  rotate(5deg);
+	}
+	50% {
+		-webkit-transform: rotate(10deg);
+		transform:  rotate(10deg);
+	}
+	75% {
+		-webkit-transform: rotate(5deg);
+		transform:  rotate(5deg);
+	}
+	100% {
+		-webkit-transform: rotate(0);
+		transform:  rotate(0);
+	}
+}
+
 
 /*	################################################################
 	1. GENERAL STRUCTURES
@@ -232,7 +276,7 @@ a:focus {
 ################################################################# */
 
 #headerwrap {
-	/*background-color: {{ site.colors.primary }};*/
+	position: relative;
 	background-image: url(../../../assets/img/bg.jpg);
 	background-repeat: no-repeat;
 	min-height: 423px;
@@ -255,6 +299,19 @@ a:focus {
 	margin: 0 auto;
 }
 
+.tail {
+	position: absolute;
+	top: 24px;
+	left: 25%;
+	width: 199px;
+	height: 182px;
+	background-image: url(../../../assets/img/tail.png);
+	background-repeat: no-repeat;
+	-webkit-animation:tail 1s linear 0.8s 1;
+	animation:tail 1s linear 0.8s 1;
+	-webkit-transform-origin: 100% 0;
+	transform-origin: 100% 0;
+}
 /* Services Wrap */
 #service {
 	color: #000;
@@ -340,7 +397,7 @@ a:focus {
 	background-position: center center;
 	min-height: 450px;
 	width: 100%;
-	
+
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
